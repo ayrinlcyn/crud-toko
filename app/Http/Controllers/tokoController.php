@@ -53,7 +53,9 @@ class tokoController extends Controller
     public function create()
     {
         $data = Kategori::all();
-        return view('toko.create', compact('data'));
+        return view('toko.create', compact('data'), [
+            'classes' => Kategori::get(),
+        ]);
     }
 
     /**
@@ -133,6 +135,7 @@ class tokoController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        
         $request->validate([
             'nama_barang' => 'required',
             'kategori_id' => 'required',
@@ -155,6 +158,8 @@ class tokoController extends Controller
         $imageName = time() . '.' . $request->gambar_barang->extension();
         $request->gambar_barang->move(public_path('gambarbarang'), $imageName);
         $imagePath = 'gambarbarang/' . $imageName;
+        
+
 
         $data = [
             'nama_barang' => $request->nama_barang,

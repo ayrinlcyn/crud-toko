@@ -36,7 +36,7 @@
                 <div class="col-sm-10">
                 <select class="form-control" name="kategori_id" id="kategori_id">
                     <option disabled value>pilih kategori</option>
-                    @foreach ($data as $item)
+                    @foreach ($classes as $item)
                     <option value="{{$item->id}}">{{$item->kategori}}</option>            
                     @endforeach
                 </select>
